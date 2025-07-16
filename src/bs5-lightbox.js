@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Lightbox for Bootstrap 5
  *
  * @file Creates a modal with a lightbox carousel.
@@ -92,7 +92,7 @@ class Lightbox {
 
 		const arr = src.split('?');
 		let params = arr.length > 1 ? '?' + arr[1] : '';
-
+		
 		return `https://www.youtube.com/embed/${youtubeId}${params}`;
 	}
 	getInstagramEmbed(src) {
@@ -111,6 +111,8 @@ class Lightbox {
 	createCarousel() {
 		const template = document.createElement('template');
 		const types = Lightbox.allowedMediaTypes.join('|');
+		
+
 		const slidesHtml = this.sources
 			.map((src, i) => {
 				src = src.replace(/\/$/, '');
@@ -133,7 +135,7 @@ class Lightbox {
 					} catch (e) {
 						url = src;
 					}
-					caption = `<p class="lightbox-caption m-0 p-2 text-center text-white small"><em>${params.get('caption')}</em></p>`;
+					caption = `<div class="carousel-caption d-none d-md-block" style="z-index:2"><p class="bg-secondary rounded">${params.get('caption')}</p></div>`;
 				}
 				let inner = `<img src="${url}" class="d-block ${imgClasses} img-fluid" style="z-index: 1; object-fit: contain;" />`;
 				let attributes = '';
@@ -144,7 +146,7 @@ class Lightbox {
 						src = youtubeLink;
 						attributes = 'title="YouTube video player" frameborder="0" allow="accelerometer autoplay clipboard-write encrypted-media gyroscope picture-in-picture"';
 					}
-					inner = instagramEmbed || `<iframe src="${src}" ${attributes} allowfullscreen></iframe>`;
+					inner = instagramEmbed || `<img src="${src}" ${attributes} class="d-block mw-100 mh-100 h-auto w-auto m-auto top-0 end-0 bottom-0 start-0 img-fluid" style="z-index: 1; object-fit: contain;" />`;
 				}
 				if (isHtml) {
 					inner = src;
@@ -158,27 +160,40 @@ class Lightbox {
 				</div>`;
 			})
 			.join('');
-		const controlsHtml =
-			this.sources.length < 2
-				? ''
-				: `
-			<button id="#lightboxCarousel-${this.hash}-prev" class="carousel-control carousel-control-prev h-75 m-auto" type="button" data-bs-target="#lightboxCarousel-${this.hash}" data-bs-slide="prev">
-				<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+
+        const controlsHtml =
+            this.sources.length < 2
+                ? ''
+                : `
+			<button id="#lightboxCarousel-${this.hash
+                }-prev" class="carousel-control-prev" type="button" data-bs-target="#lightboxCarousel-${
+                this.hash}" data-bs-slide="prev">
+				<span class="btn btn-secondary carousel-control-prev-icon" aria-hidden="true"></span>
 				<span class="visually-hidden">Previous</span>
 			</button>
-			<button id="#lightboxCarousel-${this.hash}-next" class="carousel-control carousel-control-next h-75 m-auto" type="button" data-bs-target="#lightboxCarousel-${this.hash}" data-bs-slide="next">
-				<span class="carousel-control-next-icon" aria-hidden="true"></span>
+			<button id="#lightboxCarousel-${this.hash
+                }-next" class="carousel-control-next" type="button" data-bs-target="#lightboxCarousel-${
+                this.hash}" data-bs-slide="next">
+				<span class="btn btn-secondary carousel-control-next-icon" aria-hidden="true"></span>
 				<span class="visually-hidden">Next</span>
 			</button>`;
+    
 		let classes = 'lightbox-carousel carousel slide';
 		if (this.settings.size === 'fullscreen') {
 			classes += ' position-absolute w-100 translate-middle top-50 start-50';
 		}
+        const indicatorsHtml = `
+			<div class="carousel-indicators" style="bottom: -40px">
+				${this.sources.map((_, index) => `
+					<button type="button" data-bs-target="#lightboxCarousel-${this.hash}" data-bs-slide-to="${index}" class="${index === 0 ? 'active' : ''}" aria-current="${index === 0 ? 'true' : 'false'}" aria-label="Slide ${index + 1}"></button>
+				`).join('')}
+			</div>`;
 		const html = `
 			<div id="lightboxCarousel-${this.hash}" class="${classes}" data-bs-ride="carousel" data-bs-interval="${this.carouselOptions.interval}">
-				<div class="carousel-inner">
+			    <div class="carousel-inner">
 					${slidesHtml}
 				</div>
+			    ${indicatorsHtml}
 				${controlsHtml}
 			</div>`;
 		template.innerHTML = html.trim();
@@ -219,14 +234,12 @@ class Lightbox {
 	}
 	createModal() {
 		const template = document.createElement('template');
-		const btnInner =
-			'<svg xmlns="http://www.w3.org/2000/svg" style="position: relative; top: -5px;" viewBox="0 0 16 16" fill="#fff"><path d="M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z"/></svg>';
 		const html = `
-			<div class="modal lightbox fade" id="lightboxModal-${this.hash}" tabindex="-1">
+			<div class="modal lightbox fade" id="lightboxModal-${this.hash}" tabindex="-1" aria-hidden="true">
 				<div class="modal-dialog modal-dialog-centered modal-${this.settings.size}">
 					<div class="modal-content border-0 bg-transparent">
 						<div class="modal-body p-0">
-							<button type="button" class="btn-close position-absolute top-0 end-0 p-3" data-bs-dismiss="modal" aria-label="Close" style="z-index: 2; background: none;">${btnInner}</button>
+							<button type="button" class="btn-close position-absolute p-3" data-bs-dismiss="modal" aria-label="Close" style="top: -15px;right:-40px"></button>
 						</div>
 					</div>
 				</div>
