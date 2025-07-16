@@ -21,52 +21,33 @@
   "license": "MIT",
   "main": "dist/index.js",
   "module": "src/index.js",
-  "jsdelivr": "dist/index.bundle.min.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    "import": "./dist/index.js",
+    "require": "./dist/index.umd.cjs"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/trvswgnr/bs5-lightbox.git"
   },
+  "type": "module",
   "peerDependencies": {
-    "bootstrap": "^5.0.0"
+    "bootstrap": "^5.3.7"
   },
   "sideEffects": false,
   "scripts": {
-    "build": "webpack --mode=production --config webpack.module.js && webpack --mode=production --config webpack.cdn.js",
-    "start": "webpack --watch --mode=production --config webpack.module.js",
-    "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
-    "lint": "eslint src --ext .js,.ts"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   },
-  "bundleDependencies": false,
+  "bundleDependencies": [],
   "funding": "https://github.com/sponsors/trvswgnr",
   "devDependencies": {
-    "@babel/core": "^7.17.8",
-    "@babel/preset-env": "^7.16.11",
-    "@typescript-eslint/eslint-plugin": "^4.33.0",
-    "@typescript-eslint/parser": "^4.33.0",
-    "babel-loader": "^8.2.4",
-    "eslint": "^7.32.0",
-    "prettier": "^2.4.1",
-    "terser-webpack-plugin": "^5.2.4",
-    "ts-loader": "^9.2.6",
-    "typescript": "^4.4.3",
-    "webpack": "^5.56.1",
-    "webpack-cli": "^4.8.0",
-    "webpack-merge": "^5.8.0"
-  },
-  "browserslist": [
-    ">= 0.5%",
-    "last 2 major versions",
-    "not dead",
-    "Chrome >= 60",
-    "Firefox >= 60",
-    "Firefox ESR",
-    "iOS >= 12",
-    "Safari >= 12",
-    "not Explorer <= 11"
-  ],
-  "files": [
-    "dist/**/*",
-    "src/**/*"
-  ],
-  "dependencies": {}
+    "@types/bootstrap": "^5.2.10",
+    "typescript": "^5.8.3",
+    "vite": "^6.3.2",
+    "vite-plugin-banner": "^0.8.1",
+    "vite-plugin-dts": "^4.5.3",
+    "vite-plugin-lib-inject-css": "^2.2.2"
+  }
 }

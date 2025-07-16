@@ -55,8 +55,8 @@
 	<link rel="icon" class="js-site-favicon" type="image/svg+xml" href="https://trvswgnr.github.io/bs5-lightbox/favicon.svg">
 	<link rel="alternate icon" class="js-site-favicon" type="image/png" href="https://trvswgnr.github.io/bs5-lightbox/favicon.png">
 
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/styles/github.min.css">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/github.min.css">
 
 	<!-- for documentation only -->
 	<style type="text/css" nonce="abc123">
@@ -754,21 +754,11 @@ document.querySelectorAll('.my-lightbox-toggle').forEach((el) => el.addEventList
         </div>
     </div>
 
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-	<script id="bs5-lightbox"></script>
-	<script>
-		var lightboxScript = document.getElementById('bs5-lightbox');
-		var src = 'https://cdn.jsdelivr.net/npm/bs5-lightbox@latest/dist/index.bundle.min.js'
-		var searchParams = new URLSearchParams(window.location.search);
-		if (searchParams.has('local')) {
-			src = "../dist/index.js";
-		} else if (searchParams.has('github')) {
-			src = 'https://cdn.jsdelivr.net/gh/trvswgnr/bs5-lightbox@main/dist/index.bundle.min.js';
-		}
-		lightboxScript.src = src;
-	</script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="../dist/bs5-lightbox.js" type="module"></script>
+
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/markdown-it/12.2.0/markdown-it.min.js" integrity="sha512-cTQeM/op796Fp1ZUxfech8gSMLT/HvrXMkRGdGZGQnbwuq/obG0UtcL04eByVa99qJik7WlnlQOr5/Fw5B36aw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-	<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/highlight.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
 	<script>
 		"use strict";
 			var md = window.markdownit();
