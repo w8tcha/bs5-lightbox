@@ -19,12 +19,12 @@
     "carousel"
   ],
   "license": "MIT",
-  "main": "dist/index.js",
-  "module": "src/index.js",
-  "types": "./dist/index.d.ts",
+  "main": "dist/bs5-lightbox.js",
+  "module": "src/bs5-lightbox.js",
+  "types": "./dist/bs5-lightbox.d.ts",
   "exports": {
-    "import": "./dist/index.js",
-    "require": "./dist/index.umd.cjs"
+    "import": "./dist/bs5-lightbox.js",
+    "require": "./dist/bs5-lightbox.umd.cjs"
   },
   "repository": {
     "type": "git",
@@ -40,7 +40,6 @@
     "build": "vite build",
     "preview": "vite preview"
   },
-  "bundleDependencies": [],
   "funding": "https://github.com/sponsors/trvswgnr",
   "devDependencies": {
     "@types/bootstrap": "^5.2.10",

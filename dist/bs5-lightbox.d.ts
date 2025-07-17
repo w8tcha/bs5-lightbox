@@ -1,0 +1,34 @@
+import { default as LightboxOptions } from './interfaces/lightboxOptions';
+declare class Lightbox {
+    private hash;
+    private settings;
+    private modalOptions;
+    private carouselOptions;
+    private el;
+    private src;
+    private sources;
+    private type;
+    private carouselElement;
+    private modalElement;
+    private modal;
+    private carousel;
+    static allowedEmbedTypes: string[];
+    static allowedMediaTypes: string[];
+    static defaultSelector: string;
+    constructor(el: HTMLElement | string, options?: Partial<LightboxOptions>);
+    show(): void;
+    hide(): void;
+    private setOptionsFromSettings;
+    private getSrc;
+    private getGalleryItems;
+    private getYoutubeId;
+    private getYoutubeLink;
+    private getInstagramEmbed;
+    private isEmbed;
+    private createCarousel;
+    private findGalleryItemIndex;
+    private createModal;
+    private randomHash;
+    static initialize(this: HTMLElement, e: Event): void;
+}
+export default Lightbox;
