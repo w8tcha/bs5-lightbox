@@ -89,9 +89,11 @@ class Lightbox {
       el.dataset.src ||
       el.dataset.remote ||
       (el as HTMLAnchorElement).href ||
-      "http://via.placeholder.com/1600x900";
+      "https://placehold.co/1600x900";
 
-    if (el.dataset.type === "html") return src;
+    if (el.dataset.type === "html" || el.dataset.type === "image") {
+      return src;
+    }
 
     if (!/https?:\/\//.test(src)) {
       src = window.location.origin + src;

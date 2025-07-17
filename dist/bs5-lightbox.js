@@ -50,8 +50,9 @@ const l = class l {
     );
   }
   getSrc(t) {
-    let e = t.dataset.src || t.dataset.remote || t.href || "http://via.placeholder.com/1600x900";
-    if (t.dataset.type === "html") return e;
+    let e = t.dataset.src || t.dataset.remote || t.href || "https://placehold.co/1600x900";
+    if (t.dataset.type === "html" || t.dataset.type === "image")
+      return e;
     /https?:\/\//.test(e) || (e = window.location.origin + e);
     const a = new URL(e);
     return (t.dataset.footer || t.dataset.caption) && a.searchParams.set(
