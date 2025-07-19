@@ -34,19 +34,23 @@
   "peerDependencies": {
     "bootstrap": "^5.3.7"
   },
-  "sideEffects": false,
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "format": "prettier --write \"src/**/*.ts\"",
+    "lint": "eslint src --ext .ts"
   },
   "funding": "https://github.com/sponsors/trvswgnr",
   "devDependencies": {
+    "@eslint/eslintrc": "^3.3.1",
+    "@eslint/js": "^9.31.0",
     "@types/bootstrap": "^5.2.10",
+    "eslint": "^9.31.0",
+    "prettier": "^3.6.2",
     "typescript": "^5.8.3",
-    "vite": "^6.3.2",
+    "vite": "^7.0.5",
     "vite-plugin-banner": "^0.8.1",
-    "vite-plugin-dts": "^4.5.3",
-    "vite-plugin-lib-inject-css": "^2.2.2"
+    "vite-plugin-dts": "^4.5.3"
   }
 }

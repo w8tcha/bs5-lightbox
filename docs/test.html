@@ -40,8 +40,7 @@
             image.style.backgroundImage = "url(" + img_blob + ")";
             image.dataset.src = img_blob;
 
-            document.querySelectorAll('[data-toggle="lightbox"]')
-            .forEach((el) => el.addEventListener("click", lightbox.initialize));
+            document.querySelectorAll('[data-toggle="lightbox"]').forEach((el) => el.addEventListener("click", lightbox.initialize));
         });
 
     </script>
