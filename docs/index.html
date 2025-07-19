@@ -443,16 +443,10 @@ Using NPM:
 $ npm i bs5-lightbox
 ```
 
-__**`index.js`**__
+__**`bs5-lightbox.js`**__
 ```js
 import 'bs5-lightbox';
 ```
-
-Or grab the latest JS from the CDN and add it after Bootstrap's JS:
-</div>
-<pre><code class="language-html">&lt;script src="https://cdn.jsdelivr.net/npm/bs5-lightbox@1.8.5/dist/index.bundle.min.js"&gt;&lt;/script&gt;</code></pre>
-<div class="markdown">
-Or [download the file directly](https://raw.githubusercontent.com/trvswgnr/bs5-lightbox/main/dist/index.bundle.min.js) (right-click, Save As...)
 
 Lightbox for Bootstrap 5 will automatically initialize on import, simply add `data-toggle="lightbox"` to your anchor tags.
 
@@ -464,7 +458,7 @@ Lightbox for Bootstrap 5 will automatically initialize on import, simply add `da
 
 If you want to target a different element, import the Lightbox class and instantiate it on an event:
 
-__**`index.js`**__
+__**`bs5-lightbox.js`**__
 ```js
 import Lightbox from 'bs5-lightbox';
 
@@ -518,7 +512,7 @@ Obviously, you need Bootstrap (made for Bootstrap 5).
 
 <p>Pass options as an object to the second parameter when creating an instance of the lightbox.</p>
 <div class="markdown">
-__**`index.js`**__
+__**`bs5-lightbox.js`**__
 ```js
 import Lightbox from 'bs5-lightbox';
 
@@ -745,7 +739,7 @@ document.querySelectorAll('.my-lightbox-toggle').forEach((el) => el.addEventList
 
 <div id="contributing" class="link-anchor"></div>
 <h2>Contributing</h2>
-<p>Lightbox for Bootstrap 5 is written in TypeScript and compiled to pure JavaScript. Modify the src/index.ts file, run `npm run build` and create a pull request.</p>
+<p>Lightbox for Bootstrap 5 is written in TypeScript and compiled to pure JavaScript. Modify the src/bs5-lightbox.ts file, run `npm run build` and create a pull request.</p>
 <p>You can help make this project even better and keep it up to date by making a small contribution! <a href="https://github.com/sponsors/trvswgnr">Fund this project</a>.</p>
 
 
