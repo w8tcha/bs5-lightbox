@@ -6,6 +6,11 @@ Have you been using [Lightbox for Bootstrap (ekko-lightbox)](https://github.com/
 
 Documentation: https://trvswgnr.github.io/bs5-lightbox/
 
+*FORK* for use in [YAF.NET](https://github.com/YAFNET/YAFNET)
+
+[![NPM Version](http://img.shields.io/npm/v/@w8tcha/bs5-lightbox.svg?style=flat)](https://npmjs.org/package/@w8tcha/bs5-lightbox)
+[![NPM Downloads](http://img.shields.io/npm/dm/@w8tcha/bs5-lightbox.svg?style=flat)](https://npmjs.org/package/@w8tcha/bs5-lightbox)
+
 <sub>If you enjoy using Bootstrap 5 Lightbox please star this repo.</sub>
 
 ### Development on [Version 2](https://github.com/trvswgnr/bs5-lightbox/tree/full-rework) has started—currently looking for contributors!
@@ -16,18 +21,18 @@ Use [Issues](https://github.com/trvswgnr/bs5-lightbox/issues) to request new fea
 ## Installation
 ##### Install with NPM:
 ```shell
-npm i bs5-lightbox
+npm i @w8tcha/bs5-lightbox
 ```
 
 Lightbox for Bootstrap 5 will automatically initialize on import:
 ```js
-import 'bs5-lightbox'
+import '@w8tcha/bs5-lightbox'
 ```
 By default it will target elements with the `data-toggle="lightbox"` attribute.
 
 If you want to target a different element, import the `Lightbox` class and instantiate it:
 ```js
-import Lightbox from 'bs5-lightbox'
+import Lightbox from '@w8tcha/bs5-lightbox'
 
 for (const el of document.querySelectorAll('.my-lightbox-toggle')) {
   el.addEventListener('click', Lightbox.initialize)
