@@ -196,7 +196,10 @@ class Lightbox {
 
         if (params.get("caption")) {
           try {
-            url = new URL(src).toString().replace(`?${params}`, "");
+            let urlCleaned = new URL(src);
+            urlCleaned.searchParams.delete("caption");
+            url = urlCleaned.toString();
+
             caption = `<div class="carousel-caption d-none d-md-block" style="z-index:2"><p class="bg-secondary rounded">${params.get(
               "caption"
             )}</p></div>`;

@@ -101,24 +101,25 @@ class o {
   createCarousel() {
     const t = document.createElement("template"), e = o.allowedMediaTypes.join("|"), a = this.sources.map((s, l) => {
       s = s.replace(/\/$/, "");
-      const h = new RegExp(`^(${e})`, "i"), v = /^html/.test(s), w = /^image/.test(s);
-      h.test(s) && (s = s.replace(h, ""));
-      const $ = this.settings.constrain ? "mw-100 mh-100 h-auto w-auto m-auto top-0 end-0 bottom-0 start-0" : "h-100 w-100", n = new URLSearchParams(s.split("?")[1]);
-      let u = "", d = s;
-      if (n.get("caption"))
+      const c = new RegExp(`^(${e})`, "i"), w = /^html/.test(s), $ = /^image/.test(s);
+      c.test(s) && (s = s.replace(c, ""));
+      const x = this.settings.constrain ? "mw-100 mh-100 h-auto w-auto m-auto top-0 end-0 bottom-0 start-0" : "h-100 w-100", h = new URLSearchParams(s.split("?")[1]);
+      let u = "", n = s;
+      if (h.get("caption"))
         try {
-          d = new URL(s).toString().replace(`?${n}`, ""), u = `<div class="carousel-caption d-none d-md-block" style="z-index:2"><p class="bg-secondary rounded">${n.get(
+          let g = new URL(s);
+          g.searchParams.delete("caption"), n = g.toString(), u = `<div class="carousel-caption d-none d-md-block" style="z-index:2"><p class="bg-secondary rounded">${h.get(
             "caption"
           )}</p></div>`;
         } catch {
-          d = s;
+          n = s;
         }
-      let c = `<img src="${d}" class="d-block ${$} img-fluid" style="z-index: 1; object-fit: contain;" />`, m = "";
-      const x = this.getInstagramEmbed(s), p = this.getYoutubeLink(s);
-      return this.isEmbed(s) && !w && (p && (s = p, m = 'title="YouTube video player" frameborder="0" allow="accelerometer autoplay clipboard-write encrypted-media gyroscope picture-in-picture"'), c = x || `<img src="${s}" ${m} class="d-block mw-100 mh-100 h-auto w-auto m-auto top-0 end-0 bottom-0 start-0 img-fluid" style="z-index: 1; object-fit: contain;" />`), v && (c = s), `
+      let d = `<img src="${n}" class="d-block ${x} img-fluid" style="z-index: 1; object-fit: contain;" />`, m = "";
+      const E = this.getInstagramEmbed(s), p = this.getYoutubeLink(s);
+      return this.isEmbed(s) && !$ && (p && (s = p, m = 'title="YouTube video player" frameborder="0" allow="accelerometer autoplay clipboard-write encrypted-media gyroscope picture-in-picture"'), d = E || `<img src="${s}" ${m} class="d-block mw-100 mh-100 h-auto w-auto m-auto top-0 end-0 bottom-0 start-0 img-fluid" style="z-index: 1; object-fit: contain;" />`), w && (d = s), `
           <div class="carousel-item ${l ? "" : "active"}" style="min-height: 100px">
             <div class="position-absolute top-50 start-50 translate-middle text-white"><div class="spinner-border" style="width: 3rem; height: 3rem" role="status"></div></div>
-            <div class="ratio ratio-16x9" style="background-color: #000;">${c}</div>
+            <div class="ratio ratio-16x9" style="background-color: #000;">${d}</div>
             ${u}
           </div>`;
     }).join(""), i = this.sources.length < 2 ? "" : `
@@ -129,7 +130,7 @@ class o {
         <button id="#lightboxCarousel-${this.hash}-next" class="carousel-control-next" type="button" data-bs-target="#lightboxCarousel-${this.hash}" data-bs-slide="next">
           <span class="btn btn-primary carousel-control-next-icon" aria-hidden="true"></span>
           <span class="visually-hidden">Next</span>
-        </button>`, b = `
+        </button>`, y = `
       <div class="carousel-indicators" style="bottom: -40px">
         ${this.sources.map(
       (s, l) => `
@@ -139,16 +140,16 @@ class o {
     t.innerHTML = `
       <div id="lightboxCarousel-${this.hash}" class="lightbox-carousel carousel slide" data-bs-ride="carousel" data-bs-interval="${this.carouselOptions.interval}">
         <div class="carousel-inner">${a}</div>
-        ${b}
+        ${y}
         ${i}
       </div>`.trim(), this.carouselElement = t.content.firstChild;
-    const y = {
+    const f = {
       ...this.carouselOptions,
       keyboard: !1
     };
-    this.carousel = new r.Carousel(this.carouselElement, y);
-    const f = this.type && this.type !== "image" ? this.type + this.src : this.src;
-    return this.carousel.to(this.findGalleryItemIndex(this.sources, f)), this.carouselOptions.keyboard === !0 && document.addEventListener("keydown", (s) => {
+    this.carousel = new r.Carousel(this.carouselElement, f);
+    const v = this.type && this.type !== "image" ? this.type + this.src : this.src;
+    return this.carousel.to(this.findGalleryItemIndex(this.sources, v)), this.carouselOptions.keyboard === !0 && document.addEventListener("keydown", (s) => {
       if (s.code === "ArrowLeft")
         return document.getElementById(`#lightboxCarousel-${this.hash}-prev`)?.click(), !1;
       if (s.code === "ArrowRight")
@@ -184,7 +185,7 @@ class o {
     t.preventDefault(), new o(this).show();
   }
 }
-document.querySelectorAll(o.defaultSelector).forEach((g) => g.addEventListener("click", o.initialize));
+document.querySelectorAll(o.defaultSelector).forEach((b) => b.addEventListener("click", o.initialize));
 typeof window < "u" && window.bootstrap && (window.bootstrap.Lightbox = o);
 export {
   o as default
