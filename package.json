@@ -41,7 +41,7 @@
   "funding": "https://github.com/sponsors/trvswgnr",
   "devDependencies": {
     "@eslint/eslintrc": "^3.3.1",
-    "@eslint/js": "^9.39.1",
+    "@eslint/js": "^10.0.1",
     "@types/bootstrap": "^5.2.10",
     "eslint": "^9.39.1",
     "prettier": "^3.6.2",
