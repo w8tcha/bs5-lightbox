@@ -45,10 +45,10 @@
     "@eslint/js": "^10.0.1",
     "@types/bootstrap": "^5.2.11",
     "@typescript/typescript6": "^6.0.2",
-    "eslint": "^10.10.0",
-    "prettier": "^3.9.6",
+    "eslint": "^10.11.0",
+    "prettier": "^3.9.8",
     "typescript": "^7.0.2",
-    "vite": "^8.2.2",
+    "vite": "^8.3.0",
     "vite-plugin-banner": "^0.8.1",
     "vite-plugin-dts": "^5.1.0"
   }
