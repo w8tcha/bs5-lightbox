@@ -28,7 +28,7 @@ class Lightbox {
 
   constructor(
     el: HTMLElement | string,
-    options: Partial<LightboxOptions> = {}
+    options: Partial<LightboxOptions> = {},
   ) {
     this.hash = this.randomHash();
     this.settings = Object.assign(
@@ -42,12 +42,12 @@ class Lightbox {
         size: "xl",
         constrain: true,
       },
-      options
+      options,
     );
 
     this.modalOptions = this.setOptionsFromSettings(bootstrap.Modal.Default);
     this.carouselOptions = this.setOptionsFromSettings(
-      bootstrap.Carousel.Default
+      bootstrap.Carousel.Default,
     );
 
     if (typeof el === "string") {
@@ -80,7 +80,7 @@ class Lightbox {
   private setOptionsFromSettings(obj: any): any {
     return Object.keys(obj).reduce(
       (p: any, c: string) => Object.assign(p, { [c]: this.settings[c] }),
-      {}
+      {},
     );
   }
 
@@ -103,7 +103,7 @@ class Lightbox {
     if (el.dataset.footer || el.dataset.caption) {
       url.searchParams.set(
         "caption",
-        el.dataset.footer || el.dataset.caption || ""
+        el.dataset.footer || el.dataset.caption || "",
       );
     }
 
@@ -128,8 +128,8 @@ class Lightbox {
               (v: Element) => {
                 const el = v as HTMLElement;
                 return `${el.dataset.type || ""}${this.getSrc(el)}`;
-              }
-            )
+              },
+            ),
           ),
         ]
       : [`${this.type || ""}${this.src}`];
@@ -139,7 +139,7 @@ class Lightbox {
 
   private getYoutubeId(src: string): string | false {
     const matches = src.match(
-      /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/
+      /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/,
     );
     return matches && matches[2].length === 11 ? matches[2] : false;
   }
@@ -200,8 +200,8 @@ class Lightbox {
             urlCleaned.searchParams.delete("caption");
             url = urlCleaned.toString();
 
-            caption = `<div class="carousel-caption d-none d-md-block" style="z-index:2"><p class="bg-secondary rounded">${params.get(
-              "caption"
+            caption = `<div class="d-none d-md-block" style="z-index:2"><p class="text-bg-dark text-center p-1">${params.get(
+              "caption",
             )}</p></div>`;
           } catch {
             url = src;
@@ -265,7 +265,7 @@ class Lightbox {
               index === 0 ? "active" : ""
             }" aria-current="${
               index === 0 ? "true" : "false"
-            }" aria-label="Slide ${index + 1}"></button>`
+            }" aria-label="Slide ${index + 1}"></button>`,
           )
           .join("")}
       </div>`;
@@ -333,7 +333,7 @@ class Lightbox {
       ?.appendChild(this.carouselElement);
 
     this.modalElement.addEventListener("hidden.bs.modal", () =>
-      this.modalElement.remove()
+      this.modalElement.remove(),
     );
     this.modalElement
       .querySelector("[data-bs-dismiss]")
@@ -345,7 +345,7 @@ class Lightbox {
 
   private randomHash(length = 8): string {
     return Array.from({ length }, () =>
-      Math.floor(Math.random() * 36).toString(36)
+      Math.floor(Math.random() * 36).toString(36),
     ).join("");
   }
 

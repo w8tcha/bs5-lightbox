@@ -92,7 +92,7 @@ var t = class t {
 			let o = this.settings.constrain ? "mw-100 mh-100 h-auto w-auto m-auto top-0 end-0 bottom-0 start-0" : "h-100 w-100", s = new URLSearchParams(e.split("?")[1]), c = "", l = e;
 			if (s.get("caption")) try {
 				let t = new URL(e);
-				t.searchParams.delete("caption"), l = t.toString(), c = `<div class="carousel-caption d-none d-md-block" style="z-index:2"><p class="bg-secondary rounded">${s.get("caption")}</p></div>`;
+				t.searchParams.delete("caption"), l = t.toString(), c = `<div class="d-none d-md-block" style="z-index:2"><p class="text-bg-dark text-center p-1">${s.get("caption")}</p></div>`;
 			} catch {
 				l = e;
 			}
