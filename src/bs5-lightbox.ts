@@ -196,7 +196,7 @@ class Lightbox {
 
         if (params.get("caption")) {
           try {
-            let urlCleaned = new URL(src);
+            const urlCleaned = new URL(src);
             urlCleaned.searchParams.delete("caption");
             url = urlCleaned.toString();
 
